@@ -35,4 +35,12 @@ class FrequencyUnitTest {
 
         assertEquals(expectedFrequencyValue, frequency.getCurrentValue());
     }
+
+    @ParameterizedTest
+    @CsvSource({"1,-1,1,1,-1,0", "-6,3,8,5,-6, 5", "7,7,-2,-7,-4, 14", "3,3,4,-2,-4,10"})
+    void givenNewFrequency_whenFindingFirstFrequencyValueThatIsReachedTwice_thenReturnCorrectFrequencyValue(int firstChange, int secondChange, int thirdChange, int fourthChange, int fifthChange, int expectedFrequencyValue) {
+        frequency.findFirstFrequencyReachedTwice(firstChange, secondChange, thirdChange, fourthChange, fifthChange);
+
+        assertEquals(expectedFrequencyValue, frequency.getCurrentValue());
+    }
 }

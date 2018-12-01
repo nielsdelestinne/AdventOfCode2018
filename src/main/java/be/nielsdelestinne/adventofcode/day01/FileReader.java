@@ -5,9 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
-public class FileReader {
+class FileReader {
 
-    public Stream<String> readFromFile(Path path) throws IOException {
+    Stream<String> readFromFile(Path path) throws IOException {
         return Files.lines(path);
     }
 
