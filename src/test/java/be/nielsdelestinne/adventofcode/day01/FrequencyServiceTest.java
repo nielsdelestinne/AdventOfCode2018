@@ -1,5 +1,6 @@
 package be.nielsdelestinne.adventofcode.day01;
 
+import be.nielsdelestinne.adventofcode.FileReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

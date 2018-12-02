@@ -1,6 +1,7 @@
 package be.nielsdelestinne.adventofcode.day01;
 
-import java.io.IOException;
+import be.nielsdelestinne.adventofcode.FileReader;
+
 import java.nio.file.Path;
 
 class FrequencyService {
@@ -14,31 +15,21 @@ class FrequencyService {
     }
 
     Frequency day1Challenge1(Path pathToFileWithChanges) {
-        Frequency frequency = new Frequency();
-
-        try {
-            frequency.addChangesToFrequency(
-                    interpreter.interpret(
-                            fileReader.readFromFile(pathToFileWithChanges)));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        return frequency;
+        return new Frequency()
+                .addChangesToFrequency(
+                        interpreter.interpret(
+                                fileReader.readFromFile(pathToFileWithChanges)));
     }
 
     Integer day1Challenge2(Path pathToFileWithChanges) {
-        try {
-            Frequency frequency = new Frequency();
-            if (isAFrequencyReachedTwice(pathToFileWithChanges, frequency)) {
-                return frequency.getFirstValueReachedTwice();
-            }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        Frequency frequency = new Frequency();
+        if (isAFrequencyReachedTwice(pathToFileWithChanges, frequency)) {
+            return frequency.getFirstValueReachedTwice();
         }
         return null;
     }
 
-    private boolean isAFrequencyReachedTwice(Path pathToFileWithChanges, Frequency frequency) throws IOException {
+    private boolean isAFrequencyReachedTwice(Path pathToFileWithChanges, Frequency frequency) {
         return frequency.findFirstFrequencyReachedTwice(
                 interpreter.interpret(
                         fileReader.readFromFile(pathToFileWithChanges)));

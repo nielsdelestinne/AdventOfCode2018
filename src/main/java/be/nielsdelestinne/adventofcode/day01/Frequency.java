@@ -25,10 +25,11 @@ class Frequency {
         return firstValueReachedTwice;
     }
 
-    void addChangesToFrequency(Integer... changes) {
+    Frequency addChangesToFrequency(Integer... changes) {
         currentValue += Arrays.stream(changes)
                 .mapToInt(Integer::intValue)
                 .sum();
+        return this;
     }
 
     /**
